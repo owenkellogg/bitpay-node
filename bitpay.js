@@ -1,5 +1,9 @@
+var Client = require("./lib/client.js")
+var Invoice = require("./lib/invoice.js")
+var Listener = require("./lib/listener.js")
+
 module.exports = {
-  Client: function() {}
-  Invoice: function() {},
-  Listener: function() {}
+  Client: Client,
+  Invoice: Invoice,
+  Listener: Listener
 }
