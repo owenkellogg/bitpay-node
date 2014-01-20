@@ -1,4 +1,4 @@
-## Bitpay -- Bitcoin Payment Library for V8 Javascript
+## Bitpay - Bitcoin Payment Library for Node.js
 
 I want a simple way to use the Bitpay Bitcoin API in node.js, 
 and npm -- Node Package Manager -- is the standard way to distribute
