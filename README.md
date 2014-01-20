@@ -23,6 +23,19 @@ made using the Client object initialized with the Bitpay account credentials.
     client.createInvoice({ price: 0.001, currency: 'BTC' }, function(err, invoice) {
       console.log(invoice);
     })
+
+The call to createInvoice above should produce a JSON response as per the official
+Bitpay API [documenation](https://bitpay.com/downloads/bitpayApi.pdf)
+
+    { id: '2Rpei3aKcJZUDWDSJ92oSq',
+      url: 'https://bitpay.com/invoice?id=2Rpei3aKcJZUDWDSJ92oSq',
+      status: 'new',
+      btcPrice: '0.0010',
+      price: 0.001,
+      currency: 'BTC',
+      invoiceTime: 1390253166402,
+      expirationTime: 1390254066402,
+      currentTime: 1390253166452 }
     
 ## Tests
 
