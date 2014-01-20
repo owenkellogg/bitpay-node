@@ -1,4 +1,4 @@
-## Bitcoin Payment Library for V8 Javascript
+## Bitpay -- Bitcoin Payment Library for V8 Javascript
 
 I want a simple way to use the Bitpay Bitcoin API in node.js, 
 and npm -- Node Package Manager -- is the standard way to distribute
@@ -38,7 +38,7 @@ Bitpay API [documenation](https://bitpay.com/downloads/bitpayApi.pdf)
 ## Tests
 
 Run the tests wiith Mocha, and make sure to specify your Bitpay API Key in environment.
-On the bitpay account [API keys page](https://bitpay.com/api-keys) your can generate multiple API keys
+On the Bitpay account [API keys page](https://bitpay.com/api-keys) your can generate multiple API keys
 for your various applications. Enable API key access and generate a key to use in the tests:
 
     BITPAY_API_KEY=46beb6dc657d4ceff4219a8e691b5015 mocha test/
