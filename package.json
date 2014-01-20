@@ -1,0 +1,23 @@
+{
+  "name": "bitpay-node",
+  "version": "0.0.1",
+  "description": "A Node.js library for the Bitpay Bitcoin API",
+  "main": "bitpay.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stevenzeiler/bitpay-node.git"
+  },
+  "keywords": [
+    "bitpay",
+    "bitcoin",
+    "api"
+  ],
+  "author": "stevenzeiler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stevenzeiler/bitpay-node/issues"
+  }
+}
