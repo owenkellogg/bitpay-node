@@ -14,10 +14,14 @@ made using the Client object initialized with the Bitpay account credentials.
 
 ## Example Usage
 
+#### Initialzing a Client object with Bitpay Api Key
+
     var Bitpay = require('bitpay-node');
     
     var client = new Bitpay.Client({ apiKey: process.env.BITPAY_API_KEY });
     
+#### Creating an Invoice 
+
     var invoiceOptions = { 
       price: 0.001, 
       currency: 'BTC' 
@@ -39,7 +43,9 @@ Bitpay API [documenation](https://bitpay.com/downloads/bitpayApi.pdf)
       invoiceTime: 1390253166402,
       expirationTime: 1390254066402,
       currentTime: 1390253166452 }
-      
+
+#### Retrieving an Invoice with Status
+
 Once an invoice has been created a call can be made to get its info and status.
 
     client.getInvoice('2Rpei3aKcJZUDWDSJ92oSq', function(err, invoice) {
