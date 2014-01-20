@@ -1,6 +1,6 @@
 {
   "name": "bitpay-node",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "A Node.js library for the Bitpay Bitcoin API",
   "main": "bitpay.js",
   "scripts": {
