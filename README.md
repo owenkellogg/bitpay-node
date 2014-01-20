@@ -12,13 +12,18 @@ made using the Client object initialized with the Bitpay account credentials.
 
     npm install bitpay-node
 
-## Example
+## Example Usage
 
     var Bitpay = require('bitpay-node');
     
-    client = new Bitpay.Client({ apiKey: process.env.BITPAY_API_KEY });
+    var client = new Bitpay.Client({ apiKey: process.env.BITPAY_API_KEY });
     
-    client.createInvoice({ price: 0.001, currency: 'BTC' }, function(err, invoice) {
+    var invoiceOptions = { 
+      price: 0.001, 
+      currency: 'BTC' 
+    }; 
+    
+    client.createInvoice(invoiceOptions, function(err, invoice) {
       console.log(invoice);
     })
 
@@ -34,6 +39,15 @@ Bitpay API [documenation](https://bitpay.com/downloads/bitpayApi.pdf)
       invoiceTime: 1390253166402,
       expirationTime: 1390254066402,
       currentTime: 1390253166452 }
+      
+Once an invoice has been created a call can be made to get its info and status.
+
+    client.getInvoice('2Rpei3aKcJZUDWDSJ92oSq', function(err, invoice) {
+      console.log(invoice);
+    });
+    
+Which will return the same structure as the call to createInvoice, except now
+the status may have transitioned to either `paid`, `confirmed`, `complete`, `expired` or `invalid`.
     
 ## Tests
 
