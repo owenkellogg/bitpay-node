@@ -37,6 +37,6 @@ Bitpay API [documenation](https://bitpay.com/downloads/bitpayApi.pdf)
     
 ## Tests
 
-Run the tests wiith Mocha
+Run the tests wiith Mocha, and make sure to specify your Bitpay API Key in environment.
 
-    mocha test/
+    BITPAY_API_KEY=46beb6dc657d4ceff4219a8e691b5015 mocha test/
