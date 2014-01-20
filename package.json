@@ -23,6 +23,5 @@
   "devDependencies": {
     "mocha": "1.16.x",
     "assert": "1.1.x"  
-  },
-  "
+  }
 }
