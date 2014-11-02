@@ -23,6 +23,7 @@ describe('Bitpay.Client', function() {
       var invoiceOptions = {
         price: 0.001,
         currency: 'BTC',
+        notificationURL: 'http://localhost',
         itemDesc: 'A Test Item to Purchase with Bitcoins!',
         buyerName: 'Steven Zeiler',
         posData: JSON.stringify({
@@ -35,6 +36,7 @@ describe('Bitpay.Client', function() {
         assert(!!!err);
         assert.equal(invoice.price, 0.001);
         assert.equal(invoice.currency, 'BTC');
+        assert.equal(invoice.notificationURL, 'http://localhost');
         assert.equal(invoice.btcPrice, '0.0010');
         assert.equal(invoice.status, 'new');
         console.log(invoice);
