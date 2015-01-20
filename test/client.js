@@ -12,17 +12,18 @@ describe('Bitpay.Client', function() {
       assert.equal(err.type, 'unauthorized');
       assert.equal(err.message, 'invalid api key');
       done();
-    }); 
+    });
   });
 
   it('it should create a bitpay invoice', function(done) {
     var apiKey = process.env.BITPAY_API_KEY;
     if (apiKey) {
-      client = new Bitpay.Client({ apiKey: apiKey });   
+      client = new Bitpay.Client({ apiKey: apiKey });
 
       var invoiceOptions = {
         price: 0.001,
         currency: 'BTC',
+        notificationURL: 'http://localhost',
         itemDesc: 'A Test Item to Purchase with Bitcoins!',
         buyerName: 'Steven Zeiler',
         posData: JSON.stringify({
@@ -35,32 +36,58 @@ describe('Bitpay.Client', function() {
         assert(!!!err);
         assert.equal(invoice.price, 0.001);
         assert.equal(invoice.currency, 'BTC');
+        assert.equal(invoice.notificationURL, 'http://localhost');
         assert.equal(invoice.btcPrice, '0.0010');
         assert.equal(invoice.status, 'new');
         console.log(invoice);
         done();
       });
 
-    } else { 
+    } else {
       console.log('CONFIG: set ENV variable BITPAY_API_KEY and re-run test');
-      assert(false); 
-      done(); 
+      assert(false);
+      done();
     }
   });
 
   it('it should get a bitpay invoice that already exists', function(done) {
     var apiKey = process.env.BITPAY_API_KEY;
     if (apiKey) {
-      client = new Bitpay.Client({ apiKey: apiKey });   
-  
+      client = new Bitpay.Client({ apiKey: apiKey });
+
       client.getInvoice('VZ7oTPS4Kngph99kKPDm35', function(err, inv) {
-        console.log(inv); 
+        console.log(inv);
         done();
       });
 
-    } else { 
-      assert(false); 
-      done(); 
+    } else {
+      assert(false);
+      done();
+    }
+  });
+
+  it('should be able to use the bitpay test environment', function(done) {
+    var apiKey = process.env.BITPAY_API_KEY;
+    if (apiKey) {
+      client = new Bitpay.Client({ apiKey: apiKey, testEnv: true });
+      assert.equal(client.baseUrl, "https://test.bitpay.com");
+      done();
+    } else {
+      console.log('CONFIG: set ENV variable NODE_ENV and re-run test');
+      assert(false);
+      done();
+    }
+  });
+
+  it('should be able to use the bitpay production environment', function(done) {
+    var apiKey = process.env.BITPAY_API_KEY;
+    if (apiKey) {
+      client = new Bitpay.Client({ apiKey: apiKey });
+      assert.equal(client.baseUrl, "https://bitpay.com");
+      done();
+    } else {
+      assert(false);
+      done();
     }
   });
 

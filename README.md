@@ -1,11 +1,11 @@
 ## Bitpay - Bitcoin Payment Library for Node.js
 
-I want a simple way to use the Bitpay Bitcoin API in node.js, 
+I want a simple way to use the Bitpay Bitcoin API in node.js,
 and npm -- Node Package Manager -- is the standard way to distribute
 javascript libraries for Node.js.
 
 Like other HTTP client libraries a `Client` object will manage authentication
-and connection to Bitpay's servers. All requests to the API will ultimately be 
+and connection to Bitpay's servers. All requests to the API will ultimately be
 made using the Client object initialized with the Bitpay account credentials.
 
 ## Installation
@@ -17,16 +17,22 @@ made using the Client object initialized with the Bitpay account credentials.
 #### Initialzing a Client object with Bitpay Api Key
 
     var Bitpay = require('bitpay-node');
-    
-    var client = new Bitpay.Client({ apiKey: process.env.BITPAY_API_KEY });
-    
-#### Creating an Invoice 
 
-    var invoiceOptions = { 
-      price: 0.001, 
-      currency: 'BTC' 
-    }; 
-    
+    var client = new Bitpay.Client({ apiKey: process.env.BITPAY_API_KEY });
+
+You can specify which environment you are using by passing in testEnv, and setting it to true, like so:
+
+    var client = new Bitpay.Client({ apiKey: process.env.BITPAY_API_KEY, testEnv: true });
+
+If you send is ***true***, then we will use the [Bitpay test environment](https://test.bitpay.com) otherwise we default to production.
+
+#### Creating an Invoice
+
+    var invoiceOptions = {
+      price: 0.001,
+      currency: 'BTC'
+    };
+
     client.createInvoice(invoiceOptions, function(err, invoice) {
       console.log(invoice);
     })
@@ -51,14 +57,14 @@ Once an invoice has been created a call can be made to get its info and status.
     client.getInvoice('2Rpei3aKcJZUDWDSJ92oSq', function(err, invoice) {
       console.log(invoice);
     });
-    
+
 Which will return the same structure as the call to createInvoice, except now
 the status may have transitioned to either `paid`, `confirmed`, `complete`, `expired` or `invalid`.
-    
+
 ## Tests
 
 Run the tests wiith Mocha, and make sure to specify your Bitpay API Key in environment.
 On the Bitpay account [API keys page](https://bitpay.com/api-keys) your can generate multiple API keys
 for your various applications. Enable API key access and generate a key to use in the tests:
 
-    BITPAY_API_KEY=46beb6dc657d4ceff4219a8e691b5015 mocha test/
+    BITPAY_API_KEY=46beb6dc657d4ceff4219a8e691b5015 NODE_ENV=test mocha test/
