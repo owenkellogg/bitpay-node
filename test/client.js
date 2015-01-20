@@ -68,9 +68,8 @@ describe('Bitpay.Client', function() {
 
   it('should be able to use the bitpay test environment', function(done) {
     var apiKey = process.env.BITPAY_API_KEY;
-    var environment = process.env.NODE_ENV;
-    if (apiKey && environment) {
-      client = new Bitpay.Client({ apiKey: apiKey, environment: environment });
+    if (apiKey) {
+      client = new Bitpay.Client({ apiKey: apiKey, testEnv: true });
       assert.equal(client.baseUrl, "https://test.bitpay.com");
       done();
     } else {

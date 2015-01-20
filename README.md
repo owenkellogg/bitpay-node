@@ -20,11 +20,11 @@ made using the Client object initialized with the Bitpay account credentials.
 
     var client = new Bitpay.Client({ apiKey: process.env.BITPAY_API_KEY });
 
-You can specify which environment you are using by passing in your NODE_ENV, like so:
+You can specify which environment you are using by passing in testEnv, and setting it to true, like so:
 
-    var client = new Bitpay.Client({ apiKey: process.env.BITPAY_API_KEY, environment: process.env.NODE_ENV });
+    var client = new Bitpay.Client({ apiKey: process.env.BITPAY_API_KEY, testEnv: true });
 
-If your environment is ***dev***, ***development*** or ***test***, then we will use the [Bitpay test environment](https://test.bitpay.com) otherwise we default to production.
+If you send is ***true***, then we will use the [Bitpay test environment](https://test.bitpay.com) otherwise we default to production.
 
 #### Creating an Invoice
 
